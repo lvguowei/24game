@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             val deck = remember {
-                Type.values()
+                Type.entries
                     .flatMap { type -> (1..13).map { value -> CardModel(type, value) } }
                     .toMutableStateList()
             }
@@ -56,7 +56,6 @@ class MainActivity : ComponentActivity() {
                     if (!started) {
                         Image(
                             modifier = Modifier
-                                .padding(top = 150.dp)
                                 .size(300.dp, 300.dp),
                             contentScale = ContentScale.FillHeight,
                             painter = painterResource(id = R.drawable.logo),
